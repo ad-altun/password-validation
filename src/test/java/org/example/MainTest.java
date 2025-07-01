@@ -31,4 +31,22 @@ class MainTest {
         assertEquals(expected, actual);
     }
 
+
+    // validation tests to check if password has numerics
+    @Test
+    void validateHasNumeric_shouldReturnFalse_whenPasswordHasNoNumeric() {
+        String password = "password";
+        boolean expected = false;
+        boolean actual = Main.validateHasNumeric(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateHasNumeric_shouldReturnTrue_whenPasswordHasNumeric() {
+        String password = "password123";
+        boolean expected = true;
+        boolean actual = Main.validateHasNumeric(password);
+        assertEquals(expected, actual);
+    }
+
 }

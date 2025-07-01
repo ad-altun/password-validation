@@ -11,4 +11,9 @@ public class Main {
         return length >= 8;
     }
 
+    // password.matches("^[A-Za-z0-9]*$")
+    public static boolean validateHasNumeric(String password) {
+        return password.matches(".*\\d.*");
+    }
+
 }
