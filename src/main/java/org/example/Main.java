@@ -4,6 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Initial Commit");
+
     }
+
+    public static boolean validateLength(int length) {
+        return length >= 8;
+    }
+
 }
