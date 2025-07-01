@@ -16,4 +16,8 @@ public class Main {
         return password.matches(".*\\d.*");
     }
 
+    public static boolean validateLetterCase(String password) {
+        return password.matches("^(?=.*[a-z])(?=.*[A-Z]).+$");
+    }
+
 }

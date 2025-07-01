@@ -49,4 +49,38 @@ class MainTest {
         assertEquals(expected, actual);
     }
 
+    // validation test to check both uppercase and lowercase
+    // letters appear in the password
+    @Test
+    void validateLetterCase_shouldReturnFalse_whenPasswordHasNoLetter() {
+        String password = "123*/-+";
+        boolean expected = false;
+        boolean actual = Main.validateLetterCase(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateLetterCase_shouldReturnFalse_whenPasswordHasOnlyLowerCase() {
+        String password = "abc";
+        boolean expected = false;
+        boolean actual = Main.validateLetterCase(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateLetterCase_shouldReturnFalse_whenPasswordHasOnlyUpperCase() {
+        String password = "ABC";
+        boolean expected = false;
+        boolean actual = Main.validateLetterCase(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateLetterCase_shouldReturnTrue_whenPasswordHasBothUpperAndLowerCase() {
+        String password = "abc123*ABC";
+        boolean expected = true;
+        boolean actual = Main.validateLetterCase(password);
+        assertEquals(expected, actual);
+    }
+
 }
