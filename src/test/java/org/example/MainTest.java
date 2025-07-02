@@ -83,4 +83,28 @@ class MainTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void validateUncommonPassword_shouldReturnTrue_whenPasswordCommon1() {
+        String password = "password";
+
+        boolean expected = true;
+        boolean actual = Main.validateUncommonPassword(password);
+    }
+
+    @Test
+    void validateUncommonPassword_shouldReturnTrue_whenPasswordCommon2() {
+        String password = "ninja";
+
+        boolean expected = true;
+        boolean actual = Main.validateUncommonPassword(password);
+    }
+
+    @Test
+    void validateUncommonPassword_shouldReturnFalse_whenPasswordCommon3() {
+        String password = "password123*/-PASS";
+
+        boolean expected = false;
+        boolean actual = Main.validateUncommonPassword(password);
+    }
+
 }
