@@ -9,25 +9,25 @@ class MainTest {
     // validation tests for password length
     @Test
     void validateLength_shouldReturnFalse_whenLengthIs0() {
-        int length = 0;
+        String password = "";
         boolean expected = false;
-        boolean actual = Main.validateLength(length);
+        boolean actual = Main.validateLength(password);
         assertEquals(expected, actual);
     }
 
     @Test
     void validateLength_shouldReturnFalse_whenLengthIs7() {
-        int length = 7;
+        String password = "passwor";
         boolean expected = false;
-        boolean actual = Main.validateLength(length);
+        boolean actual = Main.validateLength(password);
         assertEquals(expected, actual);
     }
 
     @Test
     void validateLength_shouldReturnTrue_whenLengthIs8() {
-        int length = 8;
+        String password = "password";
         boolean expected = true;
-        boolean actual = Main.validateLength(length);
+        boolean actual = Main.validateLength(password);
         assertEquals(expected, actual);
     }
 
@@ -84,27 +84,53 @@ class MainTest {
     }
 
     @Test
-    void validateUncommonPassword_shouldReturnTrue_whenPasswordCommon1() {
+    void validateHasNoCommonPassword_shouldReturnTrue_whenPasswordCommon1() {
         String password = "password";
 
-        boolean expected = true;
-        boolean actual = Main.validateUncommonPassword(password);
+        boolean expected = false;
+        boolean actual = Main.validateHasNoCommonPassword(password);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void validateUncommonPassword_shouldReturnTrue_whenPasswordCommon2() {
+    void validateHasNoCommonPassword_shouldReturnTrue_whenPasswordCommon2() {
         String password = "ninja";
 
-        boolean expected = true;
-        boolean actual = Main.validateUncommonPassword(password);
+        boolean expected = false;
+        boolean actual = Main.validateHasNoCommonPassword(password);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void validateUncommonPassword_shouldReturnFalse_whenPasswordCommon3() {
+    void validateHasNoCommonPassword_shouldReturnFalse_whenPasswordCommon3() {
         String password = "password123*/-PASS";
 
-        boolean expected = false;
-        boolean actual = Main.validateUncommonPassword(password);
+        boolean expected = true;
+        boolean actual = Main.validateHasNoCommonPassword(password);
+        assertEquals(expected, actual);
     }
 
+    @Test
+    void validateSpecialCharacter_shouldReturnFalse_whenNoSpecialCharacter() {
+        String password = "password123";
+        boolean expected = false;
+        boolean actual = Main.validateSpecialCharacter(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateSpecialCharacter_shouldReturnTrue_whenHasOnlySpecialCharacter() {
+        String password = "#?!@";
+        boolean expected = true;
+        boolean actual = Main.validateSpecialCharacter(password);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void validateSpecialCharacter_shouldReturnTrue_whenHasSpecialCharacter() {
+        String password = "password#?!@123";
+        boolean expected = true;
+        boolean actual = Main.validateSpecialCharacter(password);
+        assertEquals(expected, actual);
+    }
 }
